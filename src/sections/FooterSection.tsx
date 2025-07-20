@@ -34,53 +34,57 @@ const FooterSection = () => {
       </div>
 
       {/* 主标题 */}
-      <motion.h2 
+      <motion.h2
         className="absolute top-[334px] left-[118px] text-[100px] font-bold font-['Microsoft_YaHei'] text-white leading-tight"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
         更多惊喜功能 · 匣子在路上
       </motion.h2>
 
       {/* 导航链接区域 */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-[51px] left-[23px] flex items-center space-x-8"
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
-        <img src={logoCircle} alt="华师匣子 Logo" className="w-[43px] h-[43px] mr-4" />
-        
+        <img
+          src={logoCircle}
+          alt="华师匣子 Logo"
+          className="w-[43px] h-[43px] mr-4"
+        />
+
         <div className="flex items-center space-x-12 text-white">
-          <motion.a 
-            href="#" 
+          <motion.a
+            href="#"
             className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
             华师匣子 3.0
           </motion.a>
-          
-          <motion.a 
-            href="#" 
+
+          <motion.a
+            href="#"
             className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
             木犀课栈
           </motion.a>
-          
-          <motion.a 
-            href="#" 
+
+          <motion.a
+            href="#"
             className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
             加入我们
           </motion.a>
-          
-          <motion.a 
-            href="#" 
+
+          <motion.a
+            href="#"
             className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
           >
@@ -97,7 +101,9 @@ const FooterSection = () => {
             BRAND NEW
           </h2>
           <span className="text-7xl font-normal text-white">|</span>
-          <h2 className="text-7xl font-black font-['Archivo_Black'] text-white">MUXI TEAM</h2>
+          <h2 className="text-7xl font-black font-['Archivo_Black'] text-white">
+            MUXI TEAM
+          </h2>
         </div>
       </div>
 
@@ -121,7 +127,7 @@ const FooterSection = () => {
       />
 
       {/* 版权信息 */}
-      <motion.div 
+      <motion.div
         className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2 text-white text-center opacity-70"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.7 }}
@@ -141,10 +147,10 @@ const FooterSection = () => {
         transition={{
           duration: 3,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       />
-      
+
       <motion.div
         className="absolute top-[300px] left-[100px] w-3 h-3 bg-[#FFFE54] rounded-full opacity-80"
         animate={{
@@ -154,11 +160,11 @@ const FooterSection = () => {
         transition={{
           duration: 2.5,
           repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5
+          ease: 'easeInOut',
+          delay: 0.5,
         }}
       />
-      
+
       <motion.div
         className="absolute top-[450px] right-[200px] w-2 h-2 bg-white rounded-full opacity-50"
         animate={{
@@ -168,12 +174,12 @@ const FooterSection = () => {
         transition={{
           duration: 2,
           repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1
+          ease: 'easeInOut',
+          delay: 1,
         }}
       />
     </section>
   )
 }
 
-export default FooterSection 
+export default FooterSection

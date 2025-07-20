@@ -51,7 +51,7 @@ const HeroSection = () => {
         className="absolute top-[108px] left-[388px] w-[720px] h-[720px] lg:w-[720px] lg:h-[720px] md:w-[500px] md:h-[500px] md:left-[200px] sm:w-[300px] sm:h-[300px] sm:left-[50px] sm:top-[150px] drop-shadow-lg"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        transition={{ duration: 1, ease: 'easeOut' }}
       />
 
       {/* 3D钟 */}
@@ -61,27 +61,43 @@ const HeroSection = () => {
         className="absolute top-[15px] left-[375px] w-[496px] h-[496px]"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
       />
 
       {/* 左下角信息 */}
       <div className="absolute bottom-[42px] left-[42px] flex items-center space-x-4">
-        <img src={logoCircle} alt="华师匣子 Logo" className="w-[43px] h-[43px]" />
+        <img
+          src={logoCircle}
+          alt="华师匣子 Logo"
+          className="w-[43px] h-[43px]"
+        />
         <div className="text-white">
-          <h3 className="text-2xl font-normal font-['Microsoft_YaHei']">华师匣子 3.0</h3>
-          <p className="text-2xl font-light font-['Microsoft_YaHei']">Welcome to the new version!</p>
+          <h3 className="text-2xl font-normal font-['Microsoft_YaHei']">
+            华师匣子 3.0
+          </h3>
+          <p className="text-2xl font-light font-['Microsoft_YaHei']">
+            Welcome to the new version!
+          </p>
         </div>
       </div>
 
       {/* BRAND NEW & MUXI TEAM */}
       <div className="absolute top-[100px] left-[292px] lg:left-[292px] md:left-[50px] sm:left-[20px] sm:top-[50px] flex items-center space-x-4 sm:space-x-2">
-        <img src={burstIcon} alt="Burst" className="w-[88px] h-[88px] md:w-[60px] md:h-[60px] sm:w-[40px] sm:h-[40px]" />
+        <img
+          src={burstIcon}
+          alt="Burst"
+          className="w-[88px] h-[88px] md:w-[60px] md:h-[60px] sm:w-[40px] sm:h-[40px]"
+        />
         <div className="flex items-center space-x-6 sm:space-x-2 sm:flex-col sm:items-start">
           <h2 className="text-7xl md:text-5xl sm:text-3xl font-black font-['Archivo_Black'] text-white stroke-white stroke-2">
             BRAND NEW
           </h2>
-          <span className="text-7xl md:text-5xl sm:text-3xl font-normal text-white sm:hidden">|</span>
-          <h2 className="text-7xl md:text-5xl sm:text-3xl font-black font-['Archivo_Black'] text-[#FFFE54]">MUXI TEAM</h2>
+          <span className="text-7xl md:text-5xl sm:text-3xl font-normal text-white sm:hidden">
+            |
+          </span>
+          <h2 className="text-7xl md:text-5xl sm:text-3xl font-black font-['Archivo_Black'] text-[#FFFE54]">
+            MUXI TEAM
+          </h2>
         </div>
       </div>
 
@@ -107,4 +123,4 @@ const HeroSection = () => {
   )
 }
 
-export default HeroSection 
+export default HeroSection

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 * {
   margin: 0;
@@ -49,7 +49,7 @@ body {
 
 /* 选择文本颜色 */
 ::selection {
-  background-color: #D7C5F0;
+  background-color: #d7c5f0;
   color: #333;
 }
 
