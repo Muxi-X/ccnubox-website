@@ -49,7 +49,7 @@ const LibrarySection = () => {
   ]
 
   return (
-    <section className="relative h-[800px] bg-white overflow-hidden">
+    <section className="relative h-[100vh] bg-white overflow-hidden">
       {/* 模糊圆形装饰 */}
       <div
         className="absolute top-[188px] right-[115px] w-[377px] h-[370px] rounded-full"

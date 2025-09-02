@@ -7,7 +7,7 @@ import dotsPattern from '../assets/dots-pattern.svg'
 
 const FooterSection = () => {
   return (
-    <section className="relative h-[800px] bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
+    <section className="relative h-[100vh] bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
       {/* 波浪背景装饰 - 类似 Hero 区域但颜色调整 */}
       <div className="absolute inset-0">
         <div className="absolute top-[188px] w-full h-[457px]">

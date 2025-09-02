@@ -3,7 +3,7 @@ import { ThumbsUp } from 'lucide-react'
 
 const GradesSection = () => {
   return (
-    <section className="relative h-[800px] bg-white overflow-hidden">
+    <section className="relative h-[100vh] bg-white overflow-hidden">
       {/* 网格背景 */}
       <div className="absolute inset-0 opacity-10">
         {/* 横向网格线 */}
