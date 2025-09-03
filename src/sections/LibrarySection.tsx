@@ -1,50 +1,61 @@
 import { motion } from 'framer-motion'
 
+import sun from '../assets/sun.svg'
+import line from '../assets/line.svg'
+import rectangle1 from '../assets/rectangle1.png'
+import rectangle2 from '../assets/rectangle2.png'
+import rectangle3 from '../assets/rectangle3.png'
+import rectangle4 from '../assets/rectangle4.png'
+import rectangle5 from '../assets/rectangle5.png'
+import rectangle6 from '../assets/rectangle6.png'
+import rectangle7 from '../assets/rectangle7.png'
+import rectangle8 from '../assets/rectangle8.png'
+
 const LibrarySection = () => {
   // 彩色图标数据
   const iconBoxes = [
     {
-      color: 'from-red-400 to-red-600',
       size: 'w-[198px] h-[196px]',
       position: 'top-[280px] left-[243px]',
+      image: rectangle1,
     },
     {
-      color: 'from-blue-400 to-blue-600',
       size: 'w-[220px] h-[214px]',
       position: 'top-[66px] left-[441px]',
+      image: rectangle2,
     },
     {
-      color: 'from-green-400 to-green-600',
       size: 'w-[154px] h-[147px]',
       position: 'top-[115px] left-[777px]',
+      image: rectangle3,
     },
     {
-      color: 'from-yellow-400 to-yellow-600',
       size: 'w-[125px] h-[120px]',
       position: 'top-[101px] left-[1001px]',
+      image: rectangle4,
     },
     {
-      color: 'from-purple-400 to-purple-600',
       size: 'w-[101px] h-[98px]',
       position: 'top-[-1px] left-[699px]',
       opacity: 'opacity-50',
+      image: rectangle5,
     },
     {
-      color: 'from-indigo-400 to-indigo-600',
       size: 'w-[101px] h-[98px]',
       position: 'top-[26px] left-[323px]',
       opacity: 'opacity-25',
+      image: rectangle6,
     },
     {
-      color: 'from-pink-400 to-pink-600',
       size: 'w-[187px] h-[185px]',
       position: 'bottom-[114px] left-[49px]',
+      image: rectangle7,
     },
     {
-      color: 'from-teal-400 to-teal-600',
       size: 'w-[130px] h-[124px]',
       position: 'top-[342px] left-[618px]',
       opacity: 'opacity-25',
+      image: rectangle8,
     },
   ]
 
@@ -54,41 +65,32 @@ const LibrarySection = () => {
       <div
         className="absolute top-[188px] right-[115px] w-[377px] h-[370px] rounded-full"
         style={{
-          background: 'rgba(215, 197, 240, 0.58)',
-          filter: 'blur(108px)',
+          background: 'rgba(215, 197, 240, 0.6)',
+          filter: 'blur(50px)',
         }}
       />
 
       {/* 网格背景 */}
-      <div className="absolute inset-0 opacity-10">
-        {/* 横向网格线 */}
-        <div className="space-y-[25px] mt-1">
-          {Array.from({ length: 35 }).map((_, i) => (
-            <div
-              key={`h-${i}`}
-              className="w-full h-0 border-t border-[#6655E4]"
-            />
-          ))}
-        </div>
-        {/* 纵向网格线 */}
-        <div className="absolute top-0 left-[23px] flex space-x-[25px]">
-          {Array.from({ length: 56 }).map((_, i) => (
-            <div
-              key={`v-${i}`}
-              className="w-0 h-[800px] border-l border-[#6655E4]"
-            />
-          ))}
-        </div>
+      <div className="absolute inset-0">
+        <div
+          className="w-full h-full opacity-50"
+          style={{
+            backgroundImage: `
+              linear-gradient(#D7C5F094 1px, transparent 1px),
+              linear-gradient(90deg, #D7C5F094 1px, transparent 1px)
+            `,
+            backgroundSize: '3vh 3vh',
+          }}
+        />
       </div>
 
       {/* 装饰性线条 */}
       <div className="absolute top-[-62px] left-[-122px] w-[1243px] h-[720px]">
-        <svg
-          viewBox="0 0 1243 720"
-          className="w-full h-full stroke-[#8B7AE7] stroke-[56px] fill-none"
-        >
-          <path d="M100,360 Q400,200 700,360 T1143,360" opacity="0.3" />
-        </svg>
+        <img
+          src={line}
+          alt="line"
+          className="absolute top-[5vh] left-[5vh] w-[100vw]"
+        />
       </div>
 
       {/* 主标题 */}
@@ -119,12 +121,12 @@ const LibrarySection = () => {
         </h3>
       </motion.div>
 
-      {/* 彩色图标网格 */}
+      {/* 图片网格 */}
       <div className="absolute inset-0">
         {iconBoxes.map((box, i) => (
           <motion.div
             key={i}
-            className={`absolute ${box.size} ${box.position} ${box.opacity || ''} rounded-[20px] bg-gradient-to-br ${box.color} drop-shadow-lg`}
+            className={`absolute ${box.size} ${box.position} ${box.opacity || ''} rounded-[20px] drop-shadow-lg overflow-hidden`}
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: box.opacity ? 0.5 : 1 }}
             transition={{
@@ -137,43 +139,22 @@ const LibrarySection = () => {
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
           >
-            {/* 图标内容 - 这里可以放置实际的图标 */}
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-8 h-8 bg-white bg-opacity-30 rounded-full" />
-            </div>
+            {/* 显示rectangle图片 */}
+            <img
+              src={box.image}
+              alt={`Rectangle ${i + 1}`}
+              className="w-full h-full object-cover rounded-[20px]"
+            />
           </motion.div>
         ))}
       </div>
 
-      {/* 装饰网络图案 */}
-      <div className="absolute top-[24px] left-[14px] w-[309px] h-[274px] opacity-60">
-        <svg
-          viewBox="0 0 309 274"
-          className="w-full h-full stroke-[rgba(139,122,231,0.64)] stroke-[20px] fill-none"
-        >
-          {/* 网络节点连接线 */}
-          <circle cx="155" cy="137" r="55" />
-          <circle cx="50" cy="50" r="20" />
-          <circle cx="260" cy="60" r="15" />
-          <circle cx="80" cy="220" r="25" />
-          <circle cx="230" cy="200" r="20" />
-
-          <line x1="155" y1="137" x2="50" y2="50" />
-          <line x1="155" y1="137" x2="260" y2="60" />
-          <line x1="155" y1="137" x2="80" y2="220" />
-          <line x1="155" y1="137" x2="230" y2="200" />
-
-          <line x1="156" y1="215" x2="156" y2="274" strokeWidth="10" />
-          <line x1="59" y1="203" x2="98" y2="249" strokeWidth="8" />
-          <line x1="26" y1="49" x2="55" y2="80" strokeWidth="12" />
-          <line x1="223" y1="34" x2="254" y2="91" strokeWidth="8" />
-          <line x1="245" y1="130" x2="309" y2="139" strokeWidth="6" />
-          <line x1="221" y1="189" x2="265" y2="247" strokeWidth="10" />
-          <line x1="133" y1="0" x2="156" y2="54" strokeWidth="8" />
-          <line x1="0" y1="145" x2="65" y2="149" strokeWidth="12" />
-          <line x1="58" y1="203" x2="46" y2="218" strokeWidth="8" />
-        </svg>
-      </div>
+      {/* 太阳图案 */}
+      <img
+        src={sun}
+        alt="sun"
+        className="absolute top-[5vh] left-[5vh] w-[20vw]"
+      />
     </section>
   )
 }

@@ -1,37 +1,20 @@
 import { motion } from 'framer-motion'
 import logoCircle from '../assets/logo-circle.png'
-import burstIcon from '../assets/burst-icon.svg'
+import muxiTeamText from '../assets/muxiteam-brandnew.svg'
 import slash1 from '../assets/slash-1.svg'
 import slash2 from '../assets/slash-2.svg'
 import dotsPattern from '../assets/dots-pattern.svg'
+import wave from '../assets/wave.svg'
 
 const FooterSection = () => {
   return (
     <section className="relative h-[100vh] bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
-      {/* 波浪背景装饰 - 类似 Hero 区域但颜色调整 */}
-      <div className="absolute inset-0">
-        <div className="absolute top-[188px] w-full h-[457px]">
-          <div className="absolute inset-0 opacity-20">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute h-full w-[663px] opacity-60"
-                style={{
-                  left: `${i * 80 - 680}px`,
-                  transform: `translateY(${Math.sin(i * 0.2) * 50}px)`,
-                }}
-              >
-                <svg
-                  viewBox="0 0 663 600"
-                  className="w-full h-full stroke-[#EDCEFF] stroke-2 fill-none"
-                >
-                  <path d="M0,300 Q165,250 331,300 T663,300" />
-                </svg>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* 波浪背景装饰 */}
+      <img
+        src={wave}
+        alt="Wave background"
+        className="absolute top-[25vh] w-[100vw] opacity-40"
+      />
 
       {/* 主标题 */}
       <motion.h2
@@ -58,7 +41,7 @@ const FooterSection = () => {
           className="w-[43px] h-[43px] mr-4"
         />
 
-        <div className="flex items-center space-x-12 text-white">
+        <div className="flex items-center space-x-36 text-white">
           <motion.a
             href="#"
             className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
@@ -94,36 +77,29 @@ const FooterSection = () => {
       </motion.div>
 
       {/* BRAND NEW & MUXI TEAM 区域 */}
-      <div className="absolute top-[100px] left-[292px] flex items-center space-x-4">
-        <img src={burstIcon} alt="Burst" className="w-[88px] h-[88px]" />
-        <div className="flex items-center space-x-6">
-          <h2 className="text-7xl font-black font-['Archivo_Black'] text-white stroke-white stroke-2">
-            BRAND NEW
-          </h2>
-          <span className="text-7xl font-normal text-white">|</span>
-          <h2 className="text-7xl font-black font-['Archivo_Black'] text-white">
-            MUXI TEAM
-          </h2>
-        </div>
-      </div>
+      <img
+        src={muxiTeamText}
+        alt="Brand New & Muxi Team"
+        className="absolute top-[14vh] w-[80vw] right-0"
+      />
 
       {/* 装饰斜线 */}
       <img
         src={slash1}
         alt="Slash decoration"
-        className="absolute top-[41px] left-[-6px] w-[242px] h-[30px]"
+        className="absolute top-[3vh] left-[-0.5vw] w-[16vw]"
       />
       <img
         src={slash2}
         alt="Slash decoration"
-        className="absolute bottom-[47px] right-[0px] w-[242px] h-[48px]"
+        className="absolute bottom-[10vh] right-[0vw] w-[16vw]"
       />
 
       {/* 点阵装饰 */}
       <img
         src={dotsPattern}
         alt="Dots pattern"
-        className="absolute bottom-[96px] right-[262px] w-[170px] h-[155px]"
+        className="absolute bottom-[-10vh] right-[20vw] w-[15vw]"
       />
 
       {/* 版权信息 */}
