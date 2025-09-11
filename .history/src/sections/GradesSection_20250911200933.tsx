@@ -74,9 +74,9 @@ const GradesSection = () => {
 
       <motion.div
         className="
-                    absolute top-1/2 left-1/2 w-[clamp(300px,70vw,400px)] h-[clamp(500px,65vh,700px)] drop-shadow-lg transform -translate-x-1/2 -translate-y-1/2
-                    md:w-[clamp(280px,20vw,400px)] md:h-[clamp(585px,42vw,835px)] md:max-h-[85vh] md:min-h-[500px]
-                "
+                        absolute top-1/2 left-1/2 w-[clamp(300px,70vw,400px)] h-[clamp(500px,65vh,700px)] drop-shadow-lg transform -translate-x-1/2 -translate-y-1/2
+                        md:w-[clamp(280px,20vw,400px)] md:h-[clamp(585px,42vw,835px)] md:max-h-[85vh] md:min-h-[500px]
+                    "
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -142,7 +142,7 @@ const GradesSection = () => {
         {currentScreen >= 1 && (
           <motion.div
             className="
-                            absolute top-[12vh] left-[4vw] w-[clamp(180px,30vw,240px)] h-[clamp(90px,15vh,130px)]
+                            absolute top-[12vh] left-[4vw] w-[clamp(180px,30vw,240px)] h-[clamp(90px,15vh,130px)] 
                             md:top-[8vh] md:left-[8vw] md:w-[28vw] md:h-[16vh] md:max-w-[380px] md:max-h-[200px]
                         "
             initial={{ x: -50, opacity: 0, scale: 0.8 }}
@@ -170,32 +170,12 @@ const GradesSection = () => {
               }}
             />
 
-            <div
-              className="
-                        absolute top-[8%] left-[5%] w-[90%] h-[84%] flex flex-col justify-center p-2
-                        md:top-[12.5%] md:left-[6.6%] md:w-[86.8%] md:h-auto md:p-0
-                    "
-            >
-              <h3
-                className="
-                        text-[clamp(0.9rem,3vw,1.2rem)] font-bold font-['Microsoft_YaHei'] leading-[1.3em]
-                        md:text-[clamp(1.2rem,1.6vw,1.5rem)] md:leading-[1.4em]
-                    "
-              >
-                <div
-                  className="
-                            text-[#D893FF] text-[clamp(1rem,3.2vw,1.3rem)] mb-1
-                            md:text-[clamp(1.3rem,1.6vw,48px)] md:mb-2
-                        "
-                >
+            <div className="absolute top-[8%] left-[5%] w-[90%] h-[84%] flex flex-col justify-center p-2 md:top-[12.5%] md:left-[6.6%] md:w-[86.8%] md:h-auto md:p-0">
+              <h3 className="text-[clamp(0.9rem,3vw,1.2rem)] font-bold font-['Microsoft_YaHei'] leading-[1.3em] md:text-[clamp(1.2rem,1.6vw,1.5rem)] md:leading-[1.4em]">
+                <div className="text-[#D893FF] text-[clamp(1rem,3.2vw,1.3rem)] mb-1 md:text-[clamp(1.3rem,1.6vw,48px)] md:mb-2">
                   查算学分绩：
                 </div>
-                <div
-                  className="
-                            text-black text-[clamp(0.8rem,2.5vw,1rem)] leading-[1.3em]
-                            md:text-[clamp(1.2rem,1.4vw,32px)] md:leading-[1.3em]
-                        "
-                >
+                <div className="text-black text-[clamp(0.8rem,2.5vw,1rem)] leading-[1.3em] md:text-[clamp(1.2rem,1.4vw,32px)] md:leading-[1.3em]">
                   平时期末，明细详情，
                   <br />
                   加权平均，秒出结果
@@ -208,7 +188,7 @@ const GradesSection = () => {
         {currentScreen >= 2 && (
           <motion.div
             className="
-                            absolute bottom-[20vh] left-[5vw] w-[clamp(160px,25vw,240px)] h-[clamp(70px,10vh,120px)]
+                            absolute bottom-[20vh] left-[5vw] w-[clamp(160px,25vw,240px)] h-[clamp(70px,10vh,120px)] 
                             md:bottom-[15vh] md:left-[10vw] md:w-[26vw] md:h-[14vh] md:max-w-[360px] md:max-h-[160px]
                         "
             initial={{ x: -50, opacity: 0, scale: 0.8 }}
@@ -234,32 +214,12 @@ const GradesSection = () => {
               }}
             />
 
-            <div
-              className="
-                            absolute top-[8%] left-[5%] w-[90%] h-[84%] flex flex-col justify-center p-2
-                            md:top-[16.7%] md:left-[7.1%] md:w-[85.7%] md:h-auto md:p-0
-                        "
-            >
-              <h3
-                className="
-                            text-[clamp(0.9rem,3vw,1.2rem)] font-bold font-['Microsoft_YaHei'] leading-[1.3em]
-                            md:text-[clamp(1.2rem,1.6vw,1.5rem)] md:leading-[1.4em]
-                        "
-              >
-                <div
-                  className="
-                                text-white text-[clamp(1rem,3.2vw,1.3rem)] mb-1
-                                md:text-[clamp(1.3rem,1.6vw,48px)] md:mb-2
-                            "
-                >
+            <div className="absolute top-[8%] left-[5%] w-[90%] h-[84%] flex flex-col justify-center p-2 md:top-[16.7%] md:left-[7.1%] md:w-[85.7%] md:h-auto md:p-0">
+              <h3 className="text-[clamp(0.9rem,3vw,1.2rem)] font-bold font-['Microsoft_YaHei'] leading-[1.3em] md:text-[clamp(1.2rem,1.6vw,1.5rem)] md:leading-[1.4em]">
+                <div className="text-white text-[clamp(1rem,3.2vw,1.3rem)] mb-1 md:text-[clamp(1.3rem,1.6vw,48px)] md:mb-2">
                   统计周期、课程性质：
                 </div>
-                <div
-                  className="
-                                text-[#e4e4e4] text-[clamp(0.8rem,2.5vw,1rem)] leading-[1.3em]
-                                md:text-[clamp(1.2rem,1.4vw,32px)] md:leading-[1.3em]
-                            "
-                >
+                <div className="text-[#e4e4e4] text-[clamp(0.8rem,2.5vw,1rem)] leading-[1.3em] md:text-[clamp(1.2rem,1.4vw,32px)] md:leading-[1.3em]">
                   自由多选
                 </div>
               </h3>
@@ -270,7 +230,7 @@ const GradesSection = () => {
         {currentScreen >= 3 && (
           <motion.div
             className="
-                        absolute top-[40vh] right-[5vw] w-[clamp(180px,28vw,260px)] h-[clamp(100px,14vh,150px)]
+                        absolute top-[40vh] right-[5vw] w-[clamp(180px,28vw,260px)] h-[clamp(100px,14vh,150px)] 
                         md:top-[42vh] md:right-[10vw] md:w-[28vw] md:h-[18vh] md:max-w-[400px] md:max-h-[220px]
                     "
             initial={{ x: 50, opacity: 0, scale: 0.8 }}
@@ -297,32 +257,12 @@ const GradesSection = () => {
               }}
             />
 
-            <div
-              className="
-                        absolute top-[8%] left-[5%] w-[90%] h-[84%] flex flex-col justify-center p-2
-                        md:top-[11.4%] md:left-[6.6%] md:w-[86.8%] md:h-auto md:p-0
-                    "
-            >
-              <h3
-                className="
-                        text-[clamp(0.9rem,3vw,1.2rem)] font-bold font-['Microsoft_YaHei'] leading-[1.3em]
-                        md:text-[clamp(1.2rem,1.6vw,1.5rem)] md:leading-[1.4em]
-                    "
-              >
-                <div
-                  className="
-                            text-[#D893FF] text-[clamp(1rem,3.2vw,1.3rem)] mb-1
-                            md:text-[clamp(1.3rem,1.6vw,48px)] md:mb-2
-                        "
-                >
+            <div className="absolute top-[8%] left-[5%] w-[90%] h-[84%] flex flex-col justify-center p-2 md:top-[11.4%] md:left-[6.6%] md:w-[86.8%] md:h-auto md:p-0">
+              <h3 className="text-[clamp(0.9rem,3vw,1.2rem)] font-bold font-['Microsoft_YaHei'] leading-[1.3em] md:text-[clamp(1.2rem,1.6vw,1.5rem)] md:leading-[1.4em]">
+                <div className="text-[#D893FF] text-[clamp(1rem,3.2vw,1.3rem)] mb-1 md:text-[clamp(1.3rem,1.6vw,48px)] md:mb-2">
                   已修学分：
                 </div>
-                <div
-                  className="
-                            text-black text-[clamp(0.8rem,2.5vw,1rem)] leading-[1.3em]
-                            md:text-[clamp(1.2rem,1.4vw,32px)] md:leading-[1.3em]
-                        "
-                >
+                <div className="text-black text-[clamp(0.8rem,2.5vw,1rem)] leading-[1.3em] md:text-[clamp(1.2rem,1.4vw,32px)] md:leading-[1.3em]">
                   分类列表，
                   <br />
                   清查学分一目了然
@@ -334,10 +274,7 @@ const GradesSection = () => {
 
         {currentScreen >= 4 && (
           <motion.div
-            className="
-                        absolute top-[20vh] right-[8vw] w-[clamp(70px,10vw,120px)] h-[clamp(50px,8vh,80px)]
-                        md:top-[18vh] md:right-[22vw] md:w-[12vw] md:h-[12vh] md:max-w-[160px] md:max-h-[120px]
-                    "
+            className="absolute top-[20vh] right-[8vw] w-[clamp(70px,10vw,120px)] h-[clamp(50px,8vh,80px)] md:top-[18vh] md:right-[22vw] md:w-[12vw] md:h-[12vh] md:max-w-[160px] md:max-h-[120px]"
             initial={{ x: 50, opacity: 0, scale: 0.8 }}
             animate={{ x: 0, opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.7, ease: 'easeOut' }}
@@ -361,12 +298,7 @@ const GradesSection = () => {
               }}
             />
 
-            <div
-              className="
-                        absolute top-[8%] left-[5%] w-[90%] h-[84%] flex items-center justify-center p-2
-                        md:top-[16.7%] md:left-[13.3%] md:w-[73.3%] md:h-[66.7%] md:p-0
-                    "
-            >
+            <div className="absolute top-[8%] left-[5%] w-[90%] h-[84%] flex items-center justify-center p-2 md:top-[16.7%] md:left-[13.3%] md:w-[73.3%] md:h-[66.7%] md:p-0">
               <img
                 src={thumbUp}
                 alt="点赞图标"

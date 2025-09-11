@@ -23,7 +23,7 @@ const FooterSection = () => {
       <div>
         <img
           src={slash1}
-          alt="slash1"
+          alt="左上角装饰斜线"
           className="absolute top-[3vh] left-[-0.5vw] w-[16vw] max-w-[200px] h-auto"
           loading="lazy"
         />
@@ -36,10 +36,11 @@ const FooterSection = () => {
         lg:top-[10%] lg:h-[35%] lg:w-full
       "
       >
+        {/* MuxiTeamText - 在上方 */}
         <div className="w-full flex justify-end">
           <img
             src={muxiTeamText}
-            alt="muxiTeamText"
+            alt="木犀团队"
             className="w-auto h-[8vh] max-h-[80px] object-contain hidden md:block"
             loading="lazy"
           />
@@ -59,7 +60,7 @@ const FooterSection = () => {
 
           <img
             src={dotsPattern}
-            alt="dotsPattern"
+            alt="装饰性点阵图案"
             className="w-[12vw] max-w-[150px] h-auto"
             loading="lazy"
           />
@@ -68,7 +69,7 @@ const FooterSection = () => {
         <div className="relative flex-1 w-full flex items-center justify-center mb-4">
           <img
             src={wave}
-            alt="wave"
+            alt="装饰性波浪背景图案"
             className="
               min-w-[1024px] w-full h-full opacity-40 object-cover
               md:min-w-[0px]
@@ -212,7 +213,7 @@ const FooterSection = () => {
           viewport={{ once: true }}
         >
           <p className="text-[clamp(0.75rem,1vw,0.875rem)]">
-            © 2024 木犀团队 · 华中师范大学
+            © 2025 木犀团队 · 华中师范大学
           </p>
         </motion.div>
       </div>

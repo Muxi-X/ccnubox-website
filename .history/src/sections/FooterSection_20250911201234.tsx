@@ -212,7 +212,7 @@ const FooterSection = () => {
           viewport={{ once: true }}
         >
           <p className="text-[clamp(0.75rem,1vw,0.875rem)]">
-            © 2024 木犀团队 · 华中师范大学
+            © 2025 木犀团队 · 华中师范大学
           </p>
         </motion.div>
       </div>
