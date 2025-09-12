@@ -14,9 +14,9 @@ const HeroSection = () => {
     <section className="h-screen bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
       <div
         className="
-                    relative top-[5%] left-0 w-full h-[5%] hidden
-                    md:block
-                "
+            relative top-[5%] left-0 w-full h-[5%] hidden
+            md:block
+        "
       >
         <img
           src={slash1}
@@ -28,16 +28,16 @@ const HeroSection = () => {
       <div className="relative w-screen h-screen">
         <div
           className="
-                    absolute top-[25%] w-full h-[50%] flex flex-col
-                    md:top-[25%] md:h-[50%] md:w-full
-                    lg:top-[5%] lg:h-[35%] lg:w-full
-                "
+                absolute top-[25%] w-full h-[50%] flex flex-col
+                md:top-[25%] md:h-[50%] md:w-full
+                lg:top-[5%] lg:h-[35%] lg:w-full
+            "
         >
           <div
             className="
-                            absolute w-full flex justify-center 
-                            md:hidden
-                        "
+                absolute w-full flex justify-center 
+                md:hidden
+            "
           >
             <img
               src={bgText}
@@ -48,25 +48,25 @@ const HeroSection = () => {
 
           <div
             className="
-                            w-full flex flex-col justify-center
-                            items-start md:items-end
-                        "
+                w-full flex flex-col justify-center
+                items-start md:items-end
+            "
           >
             <div className="w-full flex justify-end pr-[10%] z-5">
               <img
                 src={muxiTeamText}
                 alt="Brand New & Muxi Team"
                 className="
-                                    hidden w-[80vw] max-w-[1200px] h-auto
-                                    md:block"
+                        hidden w-[80vw] max-w-[1200px] h-auto
+                        md:block"
               />
             </div>
 
             <div
               className="
-                                w-full flex justify-start pl-[10%] 
-                                md:hidden
-                            "
+                    w-full flex justify-start pl-[10%] 
+                    md:hidden
+                "
             >
               <div className="flex items-center gap-4 z-5">
                 <img
@@ -88,26 +88,26 @@ const HeroSection = () => {
               src={bgText}
               alt="Background text"
               className="
-                                hidden absolute top-0 left-1/2 w-full h-full object-cover transform -translate-x-1/2
-                                md:block"
+                        hidden absolute top-0 left-1/2 w-full h-full object-cover transform -translate-x-1/2
+                        md:block"
             />
 
             <img
               src={wave}
               alt="Wave background"
               className="
-                                min-w-[768px] w-full h-full object-cover
-                                md:min-w-0"
+                        min-w-[768px] w-full h-full object-cover
+                        md:min-w-0"
             />
 
             <motion.img
               src={mobile3d}
               alt="3D Mobile"
               className="
-                                absolute top-1/2 left-1/2 w-[70vw] max-w-[567px] h-auto drop-shadow-lg scale-x-[-1] rotate-[15deg] transform -translate-x-1/2 -translate-y-1/2
-                                md:w-[50vw]
-                                lg:w-[35vw]
-                            "
+                        absolute top-1/2 left-1/2 w-[70vw] max-w-[567px] h-auto drop-shadow-lg scale-x-[-1] rotate-[15deg] transform -translate-x-1/2 -translate-y-1/2
+                        md:w-[50vw]
+                        lg:w-[35vw]
+                    "
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1, ease: 'easeOut' }}
@@ -117,9 +117,9 @@ const HeroSection = () => {
               src={bell3d}
               alt="3D Bell"
               className="
-                                absolute top-[40%] left-[40%] w-[50vw] max-w-[567px] transform -translate-x-1/2 -translate-y-1/2
-                                md:top-[30%] md:w-[50vw]
-                                lg:w-[35vw]"
+                        absolute top-[40%] left-[40%] w-[50vw] max-w-[567px] transform -translate-x-1/2 -translate-y-1/2
+                        md:top-[30%] md:w-[50vw]
+                        lg:w-[35vw]"
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
@@ -130,9 +130,9 @@ const HeroSection = () => {
         <div>
           <div
             className="
-                            hidden absolute bottom-[10%] left-[3%] items-center gap-[14px] hidden 
-                            md:flex
-                        "
+                    hidden absolute bottom-[10%] left-[3%] items-center gap-[14px] hidden 
+                    md:flex
+                "
           >
             <img
               src={logoCircle}
