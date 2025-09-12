@@ -13,8 +13,8 @@ import Burst_pucker from '../assets/Burst-pucker-white.svg'
 const navigationLinks = [
   { href: '#', text: '华师匣子 3.0' },
   { href: '#', text: '木犀课栈' },
-  { href: '#', text: '加入我们' },
-  { href: '#', text: '关于木犀' },
+  { href: 'https://fresh.muxixyz.com/', text: '加入我们' },
+  { href: 'https://muxi-tech.xyz/', text: '关于木犀' },
 ]
 
 const FooterSection = () => {
@@ -212,7 +212,7 @@ const FooterSection = () => {
           viewport={{ once: true }}
         >
           <p className="text-[clamp(0.75rem,1vw,0.875rem)]">
-            © 2024 木犀团队 · 华中师范大学
+            © 2025 木犀团队 · 华中师范大学
           </p>
         </motion.div>
       </div>
