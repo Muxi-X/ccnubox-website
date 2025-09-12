@@ -5,155 +5,217 @@ import slash1 from '../assets/slash-1.svg'
 import slash2 from '../assets/slash-2.svg'
 import dotsPattern from '../assets/dots-pattern.svg'
 import wave from '../assets/wave.svg'
+import brandNew from '../assets/BRAND NEW.svg'
+import muxiteam2 from '../assets/muxi team2.svg'
+import Burst_pucker from '../assets/Burst-pucker-white.svg'
+
+// 导航链接数据
+const navigationLinks = [
+  { href: '#', text: '华师匣子 3.0' },
+  { href: '#', text: '木犀课栈' },
+  { href: '#', text: '加入我们' },
+  { href: '#', text: '关于木犀' },
+]
 
 const FooterSection = () => {
   return (
-    <section className="relative h-[100vh] bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
-      {/* 波浪背景装饰 */}
-      <img
-        src={wave}
-        alt="Wave background"
-        className="absolute top-[25vh] w-[100vw] opacity-40"
-      />
+    <section className="relative h-screen bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
+      <div>
+        <img
+          src={slash1}
+          alt="slash1"
+          className="absolute top-[3vh] left-[-0.5vw] w-[16vw] max-w-[200px] h-auto"
+          loading="lazy"
+        />
+      </div>
 
-      {/* 主标题 */}
-      <motion.h2
-        className="absolute top-[334px] left-[118px] text-[100px] font-bold font-['Microsoft_YaHei'] text-white leading-tight"
-        initial={{ y: 50, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        viewport={{ once: true }}
+      <div
+        className="
+        absolute top-[25%] w-full h-[50%] flex flex-col
+        md:top-[25%] md:h-[50%] md:w-full
+        lg:top-[10%] lg:h-[35%] lg:w-full
+      "
       >
-        更多惊喜功能 · 匣子在路上
-      </motion.h2>
+        <div className="w-full flex justify-end">
+          <img
+            src={muxiTeamText}
+            alt="muxiTeamText"
+            className="w-auto h-[8vh] max-h-[80px] object-contain hidden md:block"
+            loading="lazy"
+          />
+        </div>
 
-      {/* 导航链接区域 */}
-      <motion.div
-        className="absolute bottom-[51px] left-[23px] flex items-center space-x-8"
+        <div
+          className="
+          w-[50%] flex justify-right items-center gap-4 self-center
+          md:hidden
+        "
+        >
+          <img
+            src={muxiteam2}
+            alt="muxiteam2"
+            className="w-auto h-[12vh] max-h-[100px] object-contain"
+          />
+
+          <img
+            src={dotsPattern}
+            alt="dotsPattern"
+            className="w-[12vw] max-w-[150px] h-auto"
+            loading="lazy"
+          />
+        </div>
+
+        <div className="relative flex-1 w-full flex items-center justify-center mb-4">
+          <img
+            src={wave}
+            alt="wave"
+            className="
+              min-w-[1024px] w-full h-full opacity-40 object-cover
+              md:min-w-[0px]
+            "
+            loading="lazy"
+          />
+
+          <motion.h2
+            className="
+              absolute text-[clamp(2rem,4vw,5rem)] font-bold font-['Microsoft_YaHei'] text-white leading-tight px-4
+              md:text-[clamp(3rem,6vw,7rem)] 
+            "
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true }}
+            style={{
+              maxWidth: '90%',
+              textAlign: 'center',
+            }}
+          >
+            <span
+              className="
+              block relative
+              md:hidden
+            "
+            >
+              <img
+                src={Burst_pucker}
+                alt="Burst_pucker"
+                className="absolute -left-10 top-0 w-12 h-12 object-contain"
+              />
+              更多惊喜功能
+              <br />
+              匣子在路上
+              <img
+                src={Burst_pucker}
+                alt="Burst_pucker"
+                className="absolute -right-10 bottom-0 w-12 h-12 object-contain"
+              />
+            </span>
+            <span
+              className="
+              hidden whitespace-nowrap
+              md:block
+            "
+            >
+              更多惊喜功能 · 匣子在路上
+            </span>
+          </motion.h2>
+        </div>
+
+        <div
+          className="
+           absolute top-full left-1/2 transform -translate-x-1/2 mt-8 block
+           md:hidden
+         "
+        >
+          <img
+            src={brandNew}
+            alt="brandNew"
+            className="w-auto h-[8vh] max-h-[80px] object-contain"
+          />
+        </div>
+      </div>
+
+      <motion.nav
+        className=" 
+          absolute bottom-[7vh] left-1/2 transform -translate-x-1/2 flex items-center gap-[8px] px-4
+          sm:px-0
+          md:left-1/4
+          lg:left-1/5 lg:max-w-[90vw]
+        "
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         viewport={{ once: true }}
+        aria-label="主要导航"
       >
         <img
           src={logoCircle}
-          alt="华师匣子 Logo"
-          className="w-[43px] h-[43px] mr-4"
+          alt="华师匣子"
+          className="w-[3vw] h-[3vw] min-w-[30px] min-h-[30px] max-w-[43px] max-h-[43px] mr-4"
+          loading="lazy"
         />
 
-        <div className="flex items-center space-x-36 text-white">
-          <motion.a
-            href="#"
-            className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-          >
-            华师匣子 3.0
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-          >
-            木犀课栈
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-          >
-            加入我们
-          </motion.a>
-
-          <motion.a
-            href="#"
-            className="text-2xl font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300"
-            whileHover={{ scale: 1.05 }}
-          >
-            关于木犀
-          </motion.a>
+        <div
+          className="
+            flex items-center text-white gap-[8px] flex-nowrap
+            sm:gap-[16px]
+            md:gap-[24px]
+          "
+        >
+          {navigationLinks.map((link, index) => (
+            <motion.a
+              key={index}
+              href={link.href}
+              className="text-[clamp(0.75rem,1.2vw,1.5rem)] font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300 focus:outline-none rounded px-1 whitespace-nowrap"
+              whileHover={{ scale: 1.05, color: '#FFFE54' }}
+              whileFocus={{ scale: 1.05, color: '#FFFE54' }}
+              whileTap={{ scale: 0.95, color: '#FFFE54' }}
+              aria-label={`访问${link.text}页面`}
+            >
+              {link.text}
+            </motion.a>
+          ))}
         </div>
-      </motion.div>
+      </motion.nav>
 
-      {/* BRAND NEW & MUXI TEAM 区域 */}
-      <img
-        src={muxiTeamText}
-        alt="Brand New & Muxi Team"
-        className="absolute top-[14vh] w-[80vw] right-0"
-      />
-
-      {/* 装饰斜线 */}
-      <img
-        src={slash1}
-        alt="Slash decoration"
-        className="absolute top-[3vh] left-[-0.5vw] w-[16vw]"
-      />
-      <img
-        src={slash2}
-        alt="Slash decoration"
-        className="absolute bottom-[10vh] right-[0vw] w-[16vw]"
-      />
-
-      {/* 点阵装饰 */}
-      <img
-        src={dotsPattern}
-        alt="Dots pattern"
-        className="absolute bottom-[-10vh] right-[20vw] w-[15vw]"
-      />
-
-      {/* 版权信息 */}
-      <motion.div
-        className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2 text-white text-center opacity-70"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.7 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        viewport={{ once: true }}
+      <div
+        className="
+          absolute bottom-[5%] right-0 w-auto h-auto flex flex-row items-start gap-6
+          md:bottom-[-5%]
+          lg:bottom-[-13%]
+        "
       >
-        <p className="text-sm">© 2024 木犀团队 · 华中师范大学</p>
-      </motion.div>
+        <img
+          src={dotsPattern}
+          alt="dotsPattern"
+          className="
+            w-[15vw] max-w-[200px] h-auto hidden 
+            md:block
+          "
+          loading="lazy"
+        />
 
-      {/* 浮动装饰元素 */}
-      <motion.div
-        className="absolute top-[200px] right-[100px] w-4 h-4 bg-white rounded-full opacity-60"
-        animate={{
-          y: [0, -20, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
+        <img
+          src={slash2}
+          alt="slash2"
+          className="w-[16vw] max-w-[200px] h-auto"
+          loading="lazy"
+        />
+      </div>
 
-      <motion.div
-        className="absolute top-[300px] left-[100px] w-3 h-3 bg-[#FFFE54] rounded-full opacity-80"
-        animate={{
-          y: [0, -15, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 2.5,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 0.5,
-        }}
-      />
-
-      <motion.div
-        className="absolute top-[450px] right-[200px] w-2 h-2 bg-white rounded-full opacity-50"
-        animate={{
-          y: [0, -10, 0],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 1,
-        }}
-      />
+      <div>
+        <motion.div
+          className="absolute bottom-[2.8vh] left-1/2 transform -translate-x-1/2 text-white text-center opacity-70 px-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-[clamp(0.75rem,1vw,0.875rem)]">
+            © 2024 木犀团队 · 华中师范大学
+          </p>
+        </motion.div>
+      </div>
     </section>
   )
 }
