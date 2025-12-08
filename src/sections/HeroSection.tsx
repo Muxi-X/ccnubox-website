@@ -158,8 +158,14 @@ const HeroSection = () => {
                 duration: 0.8,
                 ease: 'easeOut',
               }}
+              onClick={() => {
+                window.open(
+                  'https://testflight.apple.com/join/GYG9cb1R',
+                  '_blank'
+                )
+              }}
             >
-              <p className="text-2xl font-bold text-white">App Store下载</p>
+              <p className="text-2xl font-bold text-white">iOS 下载</p>
             </motion.button>
 
             <motion.button
@@ -167,6 +173,9 @@ const HeroSection = () => {
               initial={{ scale: 0 }}
               animate={{ scale: [0, 1.1, 1] }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+              onClick={() => {
+                window.open('https://m.malink.cn/s/Zzy2Qf', '_blank')
+              }}
             >
               <p className="text-2xl font-bold text-white">安卓下载</p>
             </motion.button>
