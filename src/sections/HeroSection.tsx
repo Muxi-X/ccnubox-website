@@ -8,6 +8,7 @@ import wave from '../assets/wave.svg'
 import muxiTeamText from '../assets/muxiteam-brandnew.svg'
 import Burst_pucker from '../assets/Burst-pucker-2.svg'
 import muxiTeam from '../assets/MUXI TEAM.svg'
+import androidDownload from '../assets/android-download.png'
 
 const HeroSection = () => {
   return (
@@ -130,7 +131,7 @@ const HeroSection = () => {
         <div>
           <div
             className="
-                    hidden absolute bottom-[10%] left-[3%] items-center gap-[14px] hidden 
+                    hidden absolute bottom-[10%] left-[3%] items-center gap-[14px] 
                     md:flex
                 "
           >
@@ -143,9 +144,9 @@ const HeroSection = () => {
               <h3 className="text-2xl font-normal font-['Microsoft_YaHei']">
                 华师匣子 3.0
               </h3>
-              <p className="text-2xl font-light font-['Microsoft_YaHei']">
+              <div className="text-2xl font-light font-['Microsoft_YaHei']">
                 Welcome to the new version!
-              </p>
+              </div>
             </div>
           </div>
 
@@ -168,17 +169,41 @@ const HeroSection = () => {
               <p className="text-2xl font-bold text-white">iOS 下载</p>
             </motion.button>
 
-            <motion.button
-              className="w-[47vw] h-[5vh] whitespace-nowrap bg-[#D893FF] rounded-[10px] opacity-70 hover:opacity-80 active:opacity-100 cursor-pointer transition-opacity duration-200 ease-in-out md:max-w-[238px] min-h-[50px]"
-              initial={{ scale: 0 }}
-              animate={{ scale: [0, 1.1, 1] }}
-              transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-              onClick={() => {
-                window.open('https://m.malink.cn/s/Zzy2Qf', '_blank')
-              }}
-            >
-              <p className="text-2xl font-bold text-white">安卓下载</p>
-            </motion.button>
+            <div className="relative group">
+              <motion.button
+                className="w-[47vw] h-[5vh] whitespace-nowrap bg-[#D893FF] rounded-[10px] opacity-70 hover:opacity-80 active:opacity-100 cursor-pointer transition-opacity duration-200 ease-in-out md:max-w-[238px] min-h-[50px]"
+                initial={{ scale: 0 }}
+                animate={{ scale: [0, 1.1, 1] }}
+                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+                onClick={() => {
+                  window.open('https://m.malink.cn/s/Zzy2Qf', '_blank')
+                }}
+              >
+                <p className="text-2xl font-bold text-white">安卓下载</p>
+              </motion.button>
+
+              <div
+                className="
+                  pointer-events-none absolute bottom-[calc(100%+20px)] left-1/2 -translate-x-1/2
+                  opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+                  transition-all duration-300 ease-out
+                  bg-white rounded-2xl shadow-2xl
+                  border border-gray-100
+                  hidden md:flex flex-col items-center gap-4
+                  z-50 !p-4
+                "
+              >
+                <div className="text-sm font-bold text-gray-600 whitespace-nowrap tracking-wide">
+                  扫码或点击按钮下载 APK
+                </div>
+                <img
+                  src={androidDownload}
+                  alt="安卓下载二维码"
+                  className="w-[200px] h-auto rounded-lg"
+                />
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-100"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

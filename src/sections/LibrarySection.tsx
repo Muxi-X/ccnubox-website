@@ -12,101 +12,85 @@ import rectangle6 from '../assets/rectangle6.png'
 import rectangle7 from '../assets/rectangle7.png'
 import rectangle8 from '../assets/rectangle8.png'
 
+const features = [
+  {
+    id: 0, // 学分绩
+    size: 'w-[clamp(60px,10vw,140px)] h-[clamp(60px,10vh,140px)]',
+    position: 'bottom-[3%] left-[1%]',
+    image: rectangle1,
+    features: ['成绩查询', '学分绩计算', '一触即达'],
+    opacity: 1,
+    row: 0,
+  },
+  {
+    id: 1, // 图书馆
+    size: 'w-[clamp(60px,10vw,140px)] h-[clamp(60px,10vh,140px)]',
+    position: 'bottom-[35%] left-[20%]',
+    image: rectangle2,
+    features: ['图书馆预约', '无感登录', '快人一步'],
+    opacity: 1,
+    row: 0,
+  },
+  {
+    id: 2, // 校园卡
+    size: 'w-[clamp(80px,10vw,140px)] h-[clamp(80px,10vh,140px)]',
+    position: 'bottom-[70%] left-[35%]',
+    image: rectangle3,
+    features: ['华大V卡通', '秒开小程序', '亮码秒付'],
+    opacity: 1,
+    row: 1,
+  },
+  {
+    id: 3, // 地图
+    size: 'w-[clamp(80px,10vw,140px)] h-[clamp(80px,10vh,140px)]',
+    position: 'bottom-[80%] left-[60%]',
+    image: rectangle4,
+    features: ['校园GIS地图', '全景细节', '拯救路痴'],
+    opacity: 1,
+    row: 1,
+  },
+  {
+    id: 4, // 部门信息
+    size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
+    position: 'bottom-[50%] left-[50%]',
+    image: rectangle5,
+    features: ['学校行政部门', '信息全收集', '办事不求人'],
+    opacity: 0.4,
+    row: 0,
+  },
+  {
+    id: 5, // 常用网站
+    size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
+    position: 'top-[5%] left-[50%]',
+    image: rectangle6,
+    features: ['常用网站服务', '自动登录', '一键直达'],
+    opacity: 0.4,
+    row: 1,
+  },
+  {
+    id: 6, // 校历
+    size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
+    position: 'top-[8%] left-[30%]',
+    image: rectangle8,
+    features: ['华师官方校历', '节假调休', '一目了然'],
+    opacity: 0.4,
+    row: 0,
+  },
+  {
+    id: 7, // 电费
+    size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
+    position: 'top-[15%] left-[75%]',
+    image: rectangle7,
+    features: ['宿舍电费查询', '随时观察', '不愁断电'],
+    opacity: 1,
+    row: 1,
+  },
+]
+
 const LibrarySection = () => {
-  const [activeFeature, setActiveFeature] = useState(0)
-
-  const features = [
-    ['图书馆预约', '快人一步', '免操作，秒登录'], // 对应 rectangle2
-    ['校园卡支付', '秒开小程序', '链接支付宝，华大V卡通', '秒跳转，更轻松'], // 对应 rectangle3
-    [
-      '急着找部门？',
-      '整合学校各部门电话、地址、工作时间',
-      '点击号码自动跳转拨号并填充号码',
-    ], // 对应 rectangle5
-    ['微信服务号·不再走迷宫', '官网校历', '宿舍电费', 'GIS立体3D官方地图'], // 对应 rectangle3 rectangle7 rectangle8
-    [
-      '整合常用网站',
-      '真·一站式懒人服务',
-      '————永远"在线"',
-      '密码自动填充，登录自动点击',
-      '————登录的事儿，匣子帮你干',
-    ], // 对应 rectangle6
-  ]
-
-  const icons = [
-    {
-      id: 0, // 学分绩
-      size: 'w-[clamp(60px,10vw,140px)] h-[clamp(60px,10vh,140px)]',
-      position: 'bottom-[3%] left-[1%]',
-      image: rectangle1,
-      // 你怎么会没有feature呢
-      opacity: 1,
-      row: 0,
-    },
-    {
-      id: 1, // 图书馆
-      size: 'w-[clamp(60px,10vw,140px)] h-[clamp(60px,10vh,140px)]',
-      position: 'bottom-[35%] left-[20%]',
-      image: rectangle2,
-      featureIndex: 0,
-      opacity: 1,
-      row: 0,
-    },
-    {
-      id: 2, // 校园卡
-      size: 'w-[clamp(80px,10vw,140px)] h-[clamp(80px,10vh,140px)]',
-      position: 'bottom-[70%] left-[35%]',
-      image: rectangle3,
-      featureIndex: 1,
-      opacity: 1,
-      row: 1,
-    },
-    {
-      id: 3, // 地图
-      size: 'w-[clamp(80px,10vw,140px)] h-[clamp(80px,10vh,140px)]',
-      position: 'bottom-[80%] left-[60%]',
-      image: rectangle4,
-      featureIndex: 3,
-      opacity: 1,
-      row: 1,
-    },
-    {
-      id: 4, // 本子
-      size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
-      position: 'bottom-[50%] left-[50%]',
-      image: rectangle5,
-      featureIndex: 2,
-      opacity: 0.4,
-      row: 0,
-    },
-    {
-      id: 5, // 网站
-      size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
-      position: 'top-[5%] left-[50%]',
-      image: rectangle6,
-      featureIndex: 4,
-      opacity: 0.4,
-      row: 1,
-    },
-    {
-      id: 6, // 黄色册子
-      size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
-      position: 'top-[8%] left-[30%]',
-      image: rectangle8,
-      featureIndex: 3,
-      opacity: 0.4,
-      row: 0,
-    },
-    {
-      id: 7, // 电费
-      size: 'w-[clamp(50px,7vw,80px)] h-[clamp(50px,7vh,80px)]',
-      position: 'top-[15%] left-[75%]',
-      image: rectangle7,
-      featureIndex: 3,
-      opacity: 1,
-      row: 1,
-    },
-  ]
+  const [activeFeature, setActiveFeature] = useState<(typeof features)[0]>(
+    features[0]
+  )
 
   return (
     <section className="relative h-screen bg-white overflow-x-hidden overflow-y-visible">
@@ -158,7 +142,7 @@ const LibrarySection = () => {
                         md:block 
                     "
         >
-          {icons.map((icon, i) => (
+          {features.map((icon, i) => (
             <motion.div
               key={icon.id}
               className={`absolute ${icon.size} ${icon.position} rounded-[20px] drop-shadow-lg overflow-hidden cursor-pointer`}
@@ -182,10 +166,7 @@ const LibrarySection = () => {
                 opacity: icon.opacity,
                 transition: { duration: 0.1 },
               }}
-              onClick={() =>
-                icon.featureIndex !== undefined &&
-                setActiveFeature(icon.featureIndex)
-              }
+              onClick={() => setActiveFeature(features[i])}
             >
               <img
                 src={icon.image}
@@ -207,7 +188,7 @@ const LibrarySection = () => {
                     "
         >
           <div className="absolute top-[35vh] left-[-4%] w-[96vw] h-[12vh] grid grid-cols-4 gap-6">
-            {icons
+            {features
               .filter(icon => icon.row === 0)
               .map((icon, i) => (
                 <motion.div
@@ -225,10 +206,7 @@ const LibrarySection = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-                  onClick={() =>
-                    icon.featureIndex !== undefined &&
-                    setActiveFeature(icon.featureIndex)
-                  }
+                  onClick={() => setActiveFeature(features[i])}
                 >
                   <img
                     src={icon.image}
@@ -244,7 +222,7 @@ const LibrarySection = () => {
           </div>
 
           <div className="absolute top-[48vh] left-[6%] w-[96vw] h-[12vh] grid grid-cols-4 gap-6">
-            {icons
+            {features
               .filter(icon => icon.row === 1)
               .map((icon, i) => (
                 <motion.div
@@ -262,10 +240,7 @@ const LibrarySection = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   whileTap={{ scale: 0.9, transition: { duration: 0.1 } }}
-                  onClick={() =>
-                    icon.featureIndex !== undefined &&
-                    setActiveFeature(icon.featureIndex)
-                  }
+                  onClick={() => setActiveFeature(features[i])}
                 >
                   <img
                     src={icon.image}
@@ -307,7 +282,7 @@ const LibrarySection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           viewport={{ once: true }}
-          key={activeFeature}
+          key={activeFeature.id}
         >
           <h2
             className="
@@ -315,11 +290,11 @@ const LibrarySection = () => {
                             md:text-[clamp(1.8rem,3vw,2.8rem)] md:mb-4 md:block
                         "
           >
-            {features[activeFeature][0]}
+            {activeFeature.features[0]}
           </h2>
 
           <div className="space-y-1 md:space-y-2">
-            {features[activeFeature].slice(1).map((line, index) => (
+            {activeFeature.features.slice(1).map((line, index) => (
               <p
                 key={index}
                 className="text-[clamp(1.3rem,3.5vw,1.9rem)] font-bold md:text-[clamp(1.2rem,2vw,1.6rem)] text-gray-700 leading-relaxed"
@@ -335,7 +310,7 @@ const LibrarySection = () => {
                             md:text-[clamp(1.8rem,3vw,2.8rem)] md:mb-4 md:hidden
                         "
           >
-            {features[activeFeature][0]}
+            {activeFeature.features[0]}
           </h2>
         </motion.div>
       </div>
