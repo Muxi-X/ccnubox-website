@@ -8,6 +8,7 @@ import wave from '../assets/wave.svg'
 import brandNew from '../assets/BRAND NEW.svg'
 import muxiteam2 from '../assets/muxi team2.svg'
 import Burst_pucker from '../assets/Burst-pucker-white.svg'
+import kestackQrcode from '../assets/kestack-qrcode.jpg'
 
 // 导航链接数据
 const navigationLinks = [
@@ -163,17 +164,42 @@ const FooterSection = () => {
           "
         >
           {navigationLinks.map((link, index) => (
-            <motion.a
-              key={index}
-              href={link.href}
-              className="text-[clamp(0.75rem,1.2vw,1.5rem)] font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300 focus:outline-none rounded px-1 whitespace-nowrap"
-              whileHover={{ scale: 1.05, color: '#FFFE54' }}
-              whileFocus={{ scale: 1.05, color: '#FFFE54' }}
-              whileTap={{ scale: 0.95, color: '#FFFE54' }}
-              aria-label={`访问${link.text}页面`}
-            >
-              {link.text}
-            </motion.a>
+            <div key={index} className="relative group">
+              <motion.a
+                href={link.href}
+                className="text-[clamp(0.75rem,1.2vw,1.5rem)] font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300 focus:outline-none rounded px-1 whitespace-nowrap block"
+                whileHover={{ scale: 1.05, color: '#FFFE54' }}
+                whileFocus={{ scale: 1.05, color: '#FFFE54' }}
+                whileTap={{ scale: 0.95, color: '#FFFE54' }}
+                aria-label={`访问${link.text}页面`}
+              >
+                {link.text}
+              </motion.a>
+
+              {link.text === '木犀课栈' && (
+                <div
+                  className="
+                    pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 -translate-x-1/2
+                    opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-300 ease-out
+                    bg-white rounded-2xl shadow-2xl
+                    border border-gray-100
+                    hidden md:flex flex-col items-center gap-2
+                    z-50 !p-4 w-max
+                  "
+                >
+                  <div className="text-sm font-bold text-gray-600 whitespace-nowrap tracking-wide">
+                    扫码体验木犀课栈
+                  </div>
+                  <img
+                    src={kestackQrcode}
+                    alt="木犀课栈二维码"
+                    className="w-[140px] h-auto rounded-lg"
+                  />
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-100"></div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </motion.nav>
