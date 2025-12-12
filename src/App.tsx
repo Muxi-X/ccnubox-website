@@ -1,3 +1,4 @@
+import ScrollSnapContainer from './components/ScrollSnapContainer'
 import FooterSection from './sections/FooterSection'
 import GradesSection from './sections/GradesSection'
 import HeroSection from './sections/HeroSection'
@@ -6,13 +7,13 @@ import ScheduleSection from './sections/ScheduleSection'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <ScrollSnapContainer>
       <HeroSection />
       <ScheduleSection />
       <GradesSection />
       <LibrarySection />
       <FooterSection />
-    </div>
+    </ScrollSnapContainer>
   )
 }
 
