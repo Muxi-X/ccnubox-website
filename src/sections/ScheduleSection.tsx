@@ -67,11 +67,12 @@ const ScheduleSection = () => {
         />
       </div>
 
+      {/* 手机 */}
       <div>
         <motion.div
           className="
-                        absolute top-[42%] left-1/2 w-[40vw] h-[50vh] transform -translate-x-1/2 -translate-y-1/2
-                        sm:top-[40%] sm:w-[32vw] sm:h-[40vh]
+                        absolute top-[45%] left-1/2 w-[45vw] h-[50vh] transform -translate-x-1/2 -translate-y-1/2
+                        sm:top-[40%] sm:left-[75%] sm:w-[32vw] sm:h-[40vh]
                         md:top-1/2 md:left-[80%] md:max-w-[350px] md:max-h-[500px] md:w-auto md:h-auto
                         lg:left-3/4 lg:max-w-[400px] lg:max-h-[600px]
                     "
@@ -121,10 +122,11 @@ const ScheduleSection = () => {
         />
       </div>
 
+      {/*  选择条 */}
       <motion.div
         className="
-                    absolute top-[75%] w-full left-[37%] text-center font-light font-['Microsoft_YaHei'] text-black leading-[2em] transform -translate-x-1/2 -translate-y-1/2
-                    sm:top-[55%] sm:left-[25%] sm:w-[70vw]
+                    absolute top-[80%] w-full left-[50%] text-center font-light font-['Microsoft_YaHei'] text-black leading-[2em] transform -translate-x-1/2 -translate-y-1/2
+                    sm:top-[50%] sm:left-[25%] sm:w-[70vw]
                     md:top-1/2 md:left-[25%] md:max-w-[45vw] md:text-left md:w-full
                     lg:left-[30%] lg:max-w-[50vw]
                 "
@@ -144,7 +146,7 @@ const ScheduleSection = () => {
                             md:text-[clamp(1.4rem,2vw,60px)]
                             `}
             style={{
-              transformOrigin: 'left',
+              transformOrigin: window.innerWidth >= 768 ? 'left' : 'center',
             }}
             animate={{
               scale: getScale(index),

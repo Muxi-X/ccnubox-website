@@ -32,7 +32,7 @@ const FooterSection = () => {
 
       <div
         className="
-        absolute top-[25%] w-full h-[50%] flex flex-col
+        absolute top-[15%] w-full h-[50%] flex flex-col
         md:top-[25%] md:h-[50%] md:w-full
         lg:top-[10%] lg:h-[35%] lg:w-full
       "

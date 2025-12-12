@@ -74,7 +74,7 @@ const GradesSection = () => {
 
       <motion.div
         className="
-                        absolute top-1/2 left-1/2 w-[clamp(300px,70vw,400px)] h-[clamp(500px,65vh,700px)] drop-shadow-lg transform -translate-x-1/2 -translate-y-1/2
+                        absolute top-1/2 left-1/2 w-[65vw] h-[65vh] drop-shadow-lg transform -translate-x-1/2 -translate-y-1/2
                         md:w-[clamp(280px,20vw,400px)] md:h-[clamp(585px,42vw,835px)] md:max-h-[85vh] md:min-h-[500px]
                     "
         initial={{ y: 50, opacity: 0 }}
@@ -93,13 +93,10 @@ const GradesSection = () => {
                   key={currentScreen}
                   src={currentData.image}
                   alt={`${currentData.title}界面`}
-                  className="w-full h-full object-cover rounded-[30px]"
+                  className="w-2xs object-cover rounded-[30px]"
                   style={{
                     objectPosition: 'center center',
                     imageRendering: 'crisp-edges',
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
                     minWidth: '100%',
                     minHeight: '100%',
                   }}
