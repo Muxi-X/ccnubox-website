@@ -13,6 +13,8 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
   const touchStartYRef = useRef(0)
   const touchStartTimeRef = useRef(0)
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const accumulatedDeltaRef = useRef(0)
+  const sectionsCountRef = useRef(0) // 缓存 sections 数量
 
   // 滚动到指定 section
   const scrollToSection = useCallback((index: number) => {
@@ -41,14 +43,17 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
     scrollToSection(currentSection)
   }, [currentSection, scrollToSection])
 
+  useEffect(() => {
+    sectionsCountRef.current = contentRef.current?.children.length || 0
+  }, [children])
+
   // 处理鼠标滚轮事件
   useEffect(() => {
     const container = containerRef.current
     const content = contentRef.current
     if (!container || !content) return
 
-    const sections = content.children.length
-    let accumulatedDelta = 0
+    let accumulatedDelta = accumulatedDeltaRef.current
     const threshold = 100 // 滚动阈值
 
     const handleWheel = (e: WheelEvent) => {
@@ -59,6 +64,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
 
       // 累积滚动增量
       accumulatedDelta += e.deltaY
+      accumulatedDeltaRef.current = accumulatedDelta
 
       // 清除之前的超时
       if (scrollTimeoutRef.current) {
@@ -67,7 +73,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
 
       // 设置新的超时，如果一段时间内没有新的滚动，重置累积值
       scrollTimeoutRef.current = setTimeout(() => {
-        accumulatedDelta = 0
+        accumulatedDeltaRef.current = 0
       }, 150)
 
       // 检查是否达到阈值
@@ -75,14 +81,14 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
         const direction = accumulatedDelta > 0 ? 1 : -1
         const newSection = Math.max(
           0,
-          Math.min(sections - 1, currentSection + direction)
+          Math.min(sectionsCountRef.current - 1, currentSection + direction)
         )
 
         if (newSection !== currentSection) {
           setCurrentSection(newSection)
         }
 
-        accumulatedDelta = 0
+        accumulatedDeltaRef.current = 0
       }
     }
 
@@ -99,7 +105,6 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
     const content = contentRef.current
     if (!container || !content) return
 
-    const sections = content.children.length
     const minSwipeDistance = window.innerHeight * 0.15 // 最小滑动距离：屏幕高度的 15%
     const minSwipeVelocity = 0.3 // 最小滑动速度 (px/ms)
 
@@ -132,7 +137,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
         const direction = deltaY > 0 ? 1 : -1 // 向上滑为正，向下滑为负
         const newSection = Math.max(
           0,
-          Math.min(sections - 1, currentSection + direction)
+          Math.min(sectionsCountRef.current - 1, currentSection + direction)
         )
 
         if (newSection !== currentSection) {
