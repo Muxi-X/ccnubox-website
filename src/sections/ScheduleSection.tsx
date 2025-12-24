@@ -33,7 +33,7 @@ const ScheduleSection = () => {
   }
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden bg-white">
       <div className="absolute inset-0">
         <div
           className="w-full h-full opacity-50"

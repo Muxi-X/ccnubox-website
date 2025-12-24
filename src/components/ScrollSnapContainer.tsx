@@ -10,9 +10,11 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
   const contentRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isScrolling, setIsScrolling] = useState(false)
+  const [isBouncing, setIsBouncing] = useState(false)
   const touchStartYRef = useRef(0)
   const touchStartTimeRef = useRef(0)
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const bounceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const accumulatedDeltaRef = useRef(0)
   const sectionsCountRef = useRef(0) // 缓存 sections 数量
 
@@ -38,6 +40,43 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
     }, 700)
   }, [])
 
+  // 触发边界反弹效果
+  const triggerBounce = useCallback(
+    (direction: 'top' | 'bottom') => {
+      const content = contentRef.current
+      if (!content || isBouncing) return
+
+      setIsBouncing(true)
+
+      const currentY = -currentSection * window.innerHeight
+      const bounceDistance = 120 // 反弹距离（像素），增加以显示更多背景文案
+      const bounceOffset =
+        direction === 'top' ? bounceDistance : -bounceDistance
+
+      // 应用反弹效果
+      content.style.transition =
+        'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      content.style.transform = `translateY(${currentY + bounceOffset}px)`
+
+      // 清除之前的反弹定时器
+      if (bounceTimeoutRef.current) {
+        clearTimeout(bounceTimeoutRef.current)
+      }
+
+      // 弹回原位
+      bounceTimeoutRef.current = setTimeout(() => {
+        content.style.transition =
+          'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
+        content.style.transform = `translateY(${currentY}px)`
+
+        setTimeout(() => {
+          setIsBouncing(false)
+        }, 400)
+      }, 300)
+    },
+    [currentSection, isBouncing]
+  )
+
   // 监听 currentSection 变化，执行滚动
   useEffect(() => {
     scrollToSection(currentSection)
@@ -59,7 +98,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault()
 
-      // 如果正在滚动，忽略新的滚动事件
+      // 如果正在滚动或反弹，忽略新的滚动事件
       if (isScrolling) return
 
       // 累积滚动增量
@@ -79,12 +118,17 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
       // 检查是否达到阈值
       if (Math.abs(accumulatedDelta) >= threshold) {
         const direction = accumulatedDelta > 0 ? 1 : -1
-        const newSection = Math.max(
-          0,
-          Math.min(sectionsCountRef.current - 1, currentSection + direction)
-        )
+        const newSection = currentSection + direction
 
-        if (newSection !== currentSection) {
+        // 检查是否在边界
+        if (newSection < 0) {
+          // 尝试向上滚动但已在顶部，触发反弹
+          triggerBounce('top')
+        } else if (newSection >= sectionsCountRef.current) {
+          // 尝试向下滚动但已在底部，触发反弹
+          triggerBounce('bottom')
+        } else {
+          // 正常滚动
           setCurrentSection(newSection)
         }
 
@@ -97,7 +141,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
     return () => {
       container.removeEventListener('wheel', handleWheel)
     }
-  }, [currentSection, isScrolling])
+  }, [currentSection, isScrolling, triggerBounce])
 
   // 处理触摸事件
   useEffect(() => {
@@ -135,12 +179,17 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
 
       if (shouldSwipe) {
         const direction = deltaY > 0 ? 1 : -1 // 向上滑为正，向下滑为负
-        const newSection = Math.max(
-          0,
-          Math.min(sectionsCountRef.current - 1, currentSection + direction)
-        )
+        const newSection = currentSection + direction
 
-        if (newSection !== currentSection) {
+        // 检查是否在边界
+        if (newSection < 0) {
+          // 尝试向上滑动但已在顶部，触发反弹
+          triggerBounce('top')
+        } else if (newSection >= sectionsCountRef.current) {
+          // 尝试向下滑动但已在底部，触发反弹
+          triggerBounce('bottom')
+        } else {
+          // 正常滚动
           setCurrentSection(newSection)
         }
       }
@@ -160,7 +209,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
       container.removeEventListener('touchmove', handleTouchMove)
       container.removeEventListener('touchend', handleTouchEnd)
     }
-  }, [currentSection, isScrolling])
+  }, [currentSection, isScrolling, triggerBounce])
 
   // 清理定时器
   useEffect(() => {
@@ -168,13 +217,36 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current)
       }
+      if (bounceTimeoutRef.current) {
+        clearTimeout(bounceTimeoutRef.current)
+      }
     }
   }, [])
 
   return (
     <div ref={containerRef} className="h-screen overflow-hidden relative">
-      <div ref={contentRef} className="will-change-transform">
+      <div ref={contentRef} className="will-change-transform relative z-10">
+        {/* 顶部文案背景 - 在第一个section之前 */}
+        <div
+          className="absolute left-0 right-0 flex items-center justify-center pointer-events-none"
+          style={{ top: '-100px', height: '100px' }}
+        >
+          <div className="text-3xl md:text-5xl font-bold text-gray-400">
+            学霸没有上限
+          </div>
+        </div>
+
         {children}
+
+        {/* 底部文案背景 - 在最后一个section之后 */}
+        <div
+          className="absolute left-0 right-0 flex items-center justify-center pointer-events-none"
+          style={{ bottom: '-100px', height: '100px' }}
+        >
+          <div className="text-3xl md:text-5xl font-bold text-gray-400">
+            学霸也有底线
+          </div>
+        </div>
       </div>
     </div>
   )
