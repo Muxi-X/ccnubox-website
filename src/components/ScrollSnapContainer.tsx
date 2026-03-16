@@ -1,5 +1,5 @@
 // src/components/ScrollSnapContainer.tsx
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { Children, useEffect, useRef, useState, useCallback } from 'react'
 
 interface ScrollSnapContainerProps {
   children: React.ReactNode
@@ -55,7 +55,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
 
       // 应用反弹效果
       content.style.transition =
-        'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+        'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
       content.style.transform = `translateY(${currentY + bounceOffset}px)`
 
       // 清除之前的反弹定时器
@@ -83,7 +83,7 @@ const ScrollSnapContainer = ({ children }: ScrollSnapContainerProps) => {
   }, [currentSection, scrollToSection])
 
   useEffect(() => {
-    sectionsCountRef.current = contentRef.current?.children.length || 0
+    sectionsCountRef.current = Children.count(children)
   }, [children])
 
   // 处理鼠标滚轮事件
