@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import logoCircle from '../assets/logo-circle.png'
 import muxiTeamText from '../assets/muxiteam-brandnew.svg'
 import slash1 from '../assets/slash-1.svg'
@@ -16,6 +17,8 @@ const navigationLinks = [
   { href: '#', text: '木犀课栈' },
   { href: 'https://fresh.muxixyz.com/', text: '加入我们' },
   { href: 'https://muxi-tech.xyz/', text: '关于木犀' },
+  { href: '/user-agreement', text: '用户协议' },
+  { href: '/privacy-policy', text: '隐私政策' },
 ]
 
 const FooterSection = () => {
@@ -163,22 +166,37 @@ const FooterSection = () => {
             md:gap-[24px]
           "
         >
-          {navigationLinks.map((link, index) => (
-            <div key={index} className="relative group">
-              <motion.a
-                href={link.href}
-                className="text-[clamp(0.75rem,1.2vw,1.5rem)] font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300 focus:outline-none rounded px-1 whitespace-nowrap block"
-                whileHover={{ scale: 1.05, color: '#FFFE54' }}
-                whileFocus={{ scale: 1.05, color: '#FFFE54' }}
-                whileTap={{ scale: 0.95, color: '#FFFE54' }}
-                aria-label={`访问${link.text}页面`}
-              >
-                {link.text}
-              </motion.a>
+          {navigationLinks.map((link, index) => {
+            const isInternal = link.href.startsWith('/')
+            return (
+              <div key={index} className="relative group">
+                {isInternal ? (
+                  <Link to={link.href} className="block">
+                    <motion.span
+                      className="text-[clamp(0.75rem,1.2vw,1.5rem)] font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300 focus:outline-none rounded px-1 whitespace-nowrap block"
+                      whileHover={{ scale: 1.05, color: '#FFFE54' }}
+                      whileFocus={{ scale: 1.05, color: '#FFFE54' }}
+                      whileTap={{ scale: 0.95, color: '#FFFE54' }}
+                    >
+                      {link.text}
+                    </motion.span>
+                  </Link>
+                ) : (
+                  <motion.a
+                    href={link.href}
+                    className="text-[clamp(0.75rem,1.2vw,1.5rem)] font-normal font-['Microsoft_YaHei'] hover:text-[#FFFE54] transition-colors duration-300 focus:outline-none rounded px-1 whitespace-nowrap block"
+                    whileHover={{ scale: 1.05, color: '#FFFE54' }}
+                    whileFocus={{ scale: 1.05, color: '#FFFE54' }}
+                    whileTap={{ scale: 0.95, color: '#FFFE54' }}
+                    aria-label={`访问${link.text}页面`}
+                  >
+                    {link.text}
+                  </motion.a>
+                )}
 
-              {link.text === '木犀课栈' && (
-                <div
-                  className="
+                {link.text === '木犀课栈' && (
+                  <div
+                    className="
                     pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 -translate-x-1/2
                     opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                     transition-all duration-300 ease-out
@@ -187,20 +205,21 @@ const FooterSection = () => {
                     hidden md:flex flex-col items-center gap-2
                     z-50 !p-4 w-max
                   "
-                >
-                  <div className="text-sm font-bold text-gray-600 whitespace-nowrap tracking-wide">
-                    扫码体验木犀课栈
+                  >
+                    <div className="text-sm font-bold text-gray-600 whitespace-nowrap tracking-wide">
+                      扫码体验木犀课栈
+                    </div>
+                    <img
+                      src={kestackQrcode}
+                      alt="木犀课栈二维码"
+                      className="w-[140px] h-auto rounded-lg"
+                    />
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-100"></div>
                   </div>
-                  <img
-                    src={kestackQrcode}
-                    alt="木犀课栈二维码"
-                    className="w-[140px] h-auto rounded-lg"
-                  />
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-100"></div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            )
+          })}
         </div>
       </motion.nav>
 
