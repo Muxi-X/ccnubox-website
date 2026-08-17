@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { createPortal } from 'react-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import mobile3d from '../assets/mobile-3d.png'
 import bell3d from '../assets/bell-3d.png'
 import logoCircle from '../assets/logo-circle.png'
@@ -11,6 +13,8 @@ import muxiTeam from '../assets/MUXI TEAM.svg'
 import androidDownload from '../assets/android-download.png'
 
 const HeroSection = () => {
+  const [isMobileDownloadOpen, setIsMobileDownloadOpen] = useState(false)
+
   return (
     <section className="h-screen bg-gradient-to-b from-[#E0ADFE] to-[#EED0FF] overflow-hidden">
       <div
@@ -176,7 +180,11 @@ const HeroSection = () => {
                 animate={{ scale: [0, 1.1, 1] }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                 onClick={() => {
-                  window.open('https://m.malink.cn/s/Zzy2Qf', '_blank')
+                  if (window.innerWidth < 768) {
+                    setIsMobileDownloadOpen(true)
+                  } else {
+                    window.open('https://m.malink.cn/s/Zzy2Qf', '_blank')
+                  }
                 }}
               >
                 <p className="text-2xl font-bold text-white">安卓下载</p>
@@ -184,29 +192,105 @@ const HeroSection = () => {
 
               <div
                 className="
-                  pointer-events-none absolute bottom-[calc(100%+20px)] left-1/2 -translate-x-1/2
+                  pointer-events-none group-hover:pointer-events-auto
+                  absolute bottom-[calc(100%+20px)] left-1/2 -translate-x-1/2
                   opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0
                   transition-all duration-300 ease-out
                   bg-white rounded-2xl shadow-2xl
                   border border-gray-100
                   hidden md:flex flex-col items-center gap-4
                   z-50 !p-4
+                  after:content-[''] after:absolute after:top-full after:left-0 after:w-full after:h-6
                 "
               >
-                <div className="text-sm font-bold text-gray-600 whitespace-nowrap tracking-wide">
-                  扫码或点击按钮下载 APK
-                </div>
                 <img
                   src={androidDownload}
                   alt="安卓下载二维码"
                   className="w-[200px] h-auto rounded-lg"
                 />
+                <a
+                  href="https://dl.ccnubox.muxi.org.cn/latest.apk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-2 px-4 bg-[#D893FF] hover:bg-[#cf83fa] active:scale-[0.98] text-white font-bold rounded-xl text-sm text-center transition-all duration-200 shadow-sm cursor-pointer whitespace-nowrap block"
+                >
+                  点击下载APK
+                </a>
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white transform rotate-45 border-r border-b border-gray-100"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* 移动端安卓下载方式选择弹窗 */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {isMobileDownloadOpen && (
+              <motion.div
+                className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm md:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setIsMobileDownloadOpen(false)}
+              >
+                <motion.div
+                  className="w-full max-w-[320px] bg-white rounded-2xl p-6 shadow-2xl flex flex-col gap-3.5 z-10"
+                  initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                  transition={{ duration: 0.2, ease: 'easeOut' }}
+                  onClick={e => e.stopPropagation()}
+                >
+                  <div className="text-center pb-1">
+                    <h4 className="text-xl font-bold text-gray-900">
+                      选择安卓下载方式
+                    </h4>
+                    <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">
+                      优先推荐前往应用商店下载，若遇到异常可选择直接下载 APK
+                      安装包
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-2.5 mt-1">
+                    <button
+                      className="w-full py-3.5 px-4 bg-[#D893FF] hover:bg-[#cf83fa] active:scale-[0.98] text-white font-bold rounded-xl text-base transition-all shadow-md cursor-pointer text-center"
+                      onClick={() => {
+                        window.open('https://m.malink.cn/s/Zzy2Qf', '_blank')
+                        setIsMobileDownloadOpen(false)
+                      }}
+                    >
+                      应用商店下载（推荐）
+                    </button>
+
+                    <button
+                      className="w-full py-3.5 px-4 bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-bold rounded-xl text-base transition-all cursor-pointer text-center"
+                      onClick={() => {
+                        window.open(
+                          'https://dl.ccnubox.muxi.org.cn/latest.apk',
+                          '_blank'
+                        )
+                        setIsMobileDownloadOpen(false)
+                      }}
+                    >
+                      直接下载 APK 安装包
+                    </button>
+                  </div>
+
+                  <button
+                    className="w-full py-2.5 mt-1 text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors cursor-pointer text-center"
+                    onClick={() => setIsMobileDownloadOpen(false)}
+                  >
+                    取消
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </section>
   )
 }
