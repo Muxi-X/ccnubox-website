@@ -269,7 +269,7 @@ const HeroSection = () => {
                       className="w-full py-3.5 px-4 bg-gray-100 hover:bg-gray-200 active:scale-[0.98] text-gray-800 font-bold rounded-xl text-base transition-all cursor-pointer text-center"
                       onClick={() => {
                         window.open(
-                          'https://dl.ccnubox.muxi.org.cn/latest.apk',
+                          'https://dl.ccnubox.muxixyz.com/latest.apk',
                           '_blank'
                         )
                         setIsMobileDownloadOpen(false)
